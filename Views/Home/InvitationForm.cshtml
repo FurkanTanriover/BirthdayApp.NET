@@ -1,0 +1,36 @@
+﻿@model global::BirthdayApp.Models.InvitationModel
+
+@{
+    ViewData["Title"] = "InvitationForm";
+}
+
+<div class="panel panel-success">
+    <div class="panel-head"><h4>Sen de davetlisin</h4></div>
+    <div class="panel-body">
+        @using (Html.BeginForm()) // begin form varsayılan olarak post metoduna gider(eğer bir parametre belirtmezsek home controller altındaki ınvitationform a gidecek)
+        {
+            <div class="form-group">
+                <label>Name   :</label>
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Posta   :</label>
+                @Html.TextBoxFor(x => x.Posta, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Katılacak mısın?</label>
+                @Html.DropDownListFor(x => x.ParticipationStatus, new[]
+           {
+               new SelectListItem() {Text="Evet, Geliyorum",
+               Value=bool.TrueString },
+               new SelectListItem(){Text="Hayır, Gelmiyorum",
+               Value=bool.FalseString}
+                     }, "Geliyor musun?",new {@class="form-control"})
+            </div>
+            <div class="text-center">
+            <input class="btn btn-success" type="submit" value="Gönder"/>
+            </div>
+        }
+    </div>
+</div>
+

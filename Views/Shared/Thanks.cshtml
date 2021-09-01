@@ -1,0 +1,22 @@
+﻿@model global::BirthdayApp.Models.InvitationModel
+
+@{
+    ViewData["Title"] = "Thanks";
+}
+
+
+<h1>Teşekkürler, @Model.Name</h1>
+
+<div class="lead">
+
+@if(Model.ParticipationStatus==true)
+            {
+                @:Gelmene sevindim
+                <h1>Katılan kişiler</h1>
+                @Html.ActionLink("Katılanlar", "Attendees")
+            }
+            else
+            {
+                @:Gelemeyecek olman üzücü
+            }
+</div>
